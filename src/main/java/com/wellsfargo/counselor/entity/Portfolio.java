@@ -10,16 +10,16 @@ public class Portfolio
     private long portfolioId;
 
     @ManyToOne
-    @GeneratedValue()
-    private long clientId;
+    private Client client;
 
     @Column(nullable = false)
     private String creationDate;
 
     protected Portfolio() {}
 
-    public Portfolio(String creationDate)
+    public Portfolio(Client client, String creationDate)
     {
+        this.client = client;
         this.creationDate = creationDate;
     }
 
@@ -28,9 +28,14 @@ public class Portfolio
         return portfolioId;
     }
 
-    public Long getClientId()
+    public Client getClient()
     {
-        return clientId;
+        return client;
+    }
+
+    public void setClient(Client client)
+    {
+        this.client = client;
     }
 
     public String getCreationDate()
